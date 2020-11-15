@@ -6,7 +6,7 @@ REM Otkako kje zavrshi skriptata kje bide ispechatena DONE poraka i mozheme da g
 
 set "osmConvert=osmconvert.exe"
 set "osmFilter=osmfilter.exe"
-set "file=macedonia-latest.osm.pbf"
+set "file=macedonia-latest.osm"
 set "csvArgs=@id @lat @lon amenity name cuisine addr:street addr:postcode building addr:city opening_hours internet_access addr:housenumber phone smoking outdoor_seating website takeaway wheelchair operator email delivery drive_through organic capacity payment:mastercard payment:visa"
 cls
 %osmFilter% %file% --keep="amenity=ice_cream" | %osmConvert% - --all-to-nodes --csv="%csvArgs%" --csv-headline --csv-separator="," -o="ice_cream.csv"
