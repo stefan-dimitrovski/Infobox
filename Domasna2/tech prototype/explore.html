@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infobox - Explore</title>
+
+    <link rel="stylesheet" href="leaflet/leaflet.css" />
+    <script src="leaflet/leaflet.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #f3f3f3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Infobox</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02"
+            aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Explore amenities</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about_us.html">About us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <div class="row justify-content-md-center">
+            <!--height: 600px; width: 1000px; -->
+            <div class="col-sm-4 col-md-4">
+                <br><span class="h1">Choose amenity:</span>
+                <select class="form-control" name="choosePlace" id="choosePlace" onchange="addMarkers()">
+                    <option value="cafe">Cafe</option>
+                    <option value="fast_food">Fast food</option>
+                    <option value="restaurant">Restaurant</option>
+                </select><br>
+                <div id="infoArea"></div>
+            </div>
+            <div class="col-sm-8 col-md-8" id="mapid"
+            style="height: 500px; border: 2px solid lightgray; border-radius: 10px;"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var mymap = L.map('mapid').setView([41.996243, 21.428146], 13);
+    //pk.eyJ1IjoicDFheWVyIiwiYSI6ImNraGUyYTBrNzA3cXgyd3FvZWJ6dDA5N28ifQ.lLfGB-VZBrqEhsjIERV4Qg
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoicDFheWVyIiwiYSI6ImNraGUyYTBrNzA3cXgyd3FvZWJ6dDA5N28ifQ.lLfGB-VZBrqEhsjIERV4Qg'
+    }).addTo(mymap);
+
+    var myObj;
+    var cafe = [];
+    var fast_food = [];
+    var restaurant = [];
+    var global = this;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            for (let i = 0; i < myObj.length; i++) {
+                if (myObj[i].amenity == "cafe") {
+                    cafe.push(myObj[i]);
+                }
+                else if (myObj[i].amenity == "fast_food") {
+                    fast_food.push(myObj[i]);
+                }
+                else if (myObj[i].amenity == "restaurant") {
+                    restaurant.push(myObj[i]);
+                }
+            }
+        }
+    };
+    xmlhttp.open("GET", "https://raw.githubusercontent.com/P1ayer4312/testingStuff/main/leaflet/proekt_public_content.json", true);
+    xmlhttp.send();
+    var layerGroup = L.layerGroup().addTo(mymap);
+    var myIcon = L.divIcon({ className: 'my-div-icon', html: '<b>Hello!</b>' });
+    L.marker([41.9768128, 21.4444199], { icon: myIcon }).addTo(mymap);
+    function addMarkers() {
+        // remove all the markers in one go
+        layerGroup.clearLayers();
+        if (document.getElementById('choosePlace').value == "cafe") {
+            for (let i = 0; i < cafe.length; i++) {
+                L.marker([cafe[i].lat, cafe[i].lon]).on('click', function () { showInfo(cafe[i]) }).addTo(layerGroup);
+            }
+        }
+        else if (document.getElementById('choosePlace').value == "fast_food") {
+            for (let i = 0; i < fast_food.length; i++) {
+                L.marker([fast_food[i].lat, fast_food[i].lon]).on('click', function () { showInfo(fast_food[i]) }).addTo(layerGroup);
+            }
+        }
+        else if (document.getElementById('choosePlace').value == "restaurant") {
+            for (let i = 0; i < restaurant.length; i++) {
+                L.marker([restaurant[i].lat, restaurant[i].lon]).on('click', function () { showInfo(restaurant[i]) }).addTo(layerGroup);
+            }
+        }
+    }
+
+    var localization = {
+        id: "ID_TEMP: ",
+        lat: "LAT_TEMP: ",
+        lon: "LOT_TEMP: ",
+        amenity: "AMENITY_TEMP: ",
+        name: "Name: ",
+        cuisine: "Cuisine: ",
+        addr_street: "Street: ",
+        addr_postcode: "Postcode: ",
+        building: "Building: ",
+        addr_city: "City: ",
+        opening_hours: "Opening hour: ",
+        internet_access: "Internet access: ",
+        addr_housenumber: "House number: ",
+        phone: "Phone: ",
+        smoking: "Smoking: ",
+        outdoor_seating: "Outdoor seating: ",
+        website: "Website: ",
+        takeaway: "Takeaway: ",
+        wheelchair: "Wheelchair: ",
+        operator_: "Operator: ",
+        email: "Email: ",
+        delivery: "Delivery: ",
+        drive_through: "Drive trough: ",
+        organic: "Organic: ",
+        capacity: "Capacity: ",
+        payment_mastercard: "Mastercard: "
+    };
+
+    function showInfo(place) {
+        var infoArea = document.getElementById("infoArea");
+        infoArea.innerHTML = "";
+        for (let i in place) {
+            // Komentiraj go ovoj if za debug-iranje
+            if (i == "id" || i == "lat" || i == "lon" || i == "amenity") continue;
+            if (place[i] != null) {
+                if (i == "website") {
+                    infoArea.innerHTML += "<b>" + localization[i] + "</b><a href=" + place[i] + "target=\"_blank\">" + place[i] + "</a><br>";
+                }
+                else {
+                    infoArea.innerHTML += "<b>" + localization[i] + "</b>" + place[i] + "<br>";
+                }
+            }
+        }
+    }
+
+    setTimeout(addMarkers, 1000);
+
+</script>
+
+</html>
