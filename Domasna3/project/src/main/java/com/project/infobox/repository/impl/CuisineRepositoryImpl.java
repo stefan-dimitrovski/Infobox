@@ -25,8 +25,7 @@ public class CuisineRepositoryImpl implements CuisineRepository {
         Set resultArray = new HashSet();
         for (String item: params) {
             temp = amenityRepository.findByCuisine(item);
-            if (temp != null)
-                resultArray.addAll(temp);
+            resultArray.addAll(temp);
         }
         return resultArray;
     }
