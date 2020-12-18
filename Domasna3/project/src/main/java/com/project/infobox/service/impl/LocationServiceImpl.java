@@ -2,7 +2,8 @@ package com.project.infobox.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import mk.finki.dians.proekt.service.LocationService;
+
+import com.project.infobox.service.LocationService;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
