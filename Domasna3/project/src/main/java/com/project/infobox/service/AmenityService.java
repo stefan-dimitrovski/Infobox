@@ -10,4 +10,8 @@ public interface AmenityService {
     List<Amenity> findAll();
 
     Optional<Amenity> findById(Long id);
+
+    List<String> findDistinctAmenityType();
+
+    List<Amenity> findAmenityByAmenity(String amenity);
 }

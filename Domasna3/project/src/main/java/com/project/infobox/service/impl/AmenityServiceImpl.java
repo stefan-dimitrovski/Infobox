@@ -27,4 +27,14 @@ public class AmenityServiceImpl implements AmenityService {
     public Optional<Amenity> findById(Long id) {
         return Optional.of(this.amenityRepository.findById(id).orElseThrow(()-> new AmenityNotFoundException(id)));
     }
+
+    @Override
+    public List<String> findDistinctAmenityType() {
+        return this.amenityRepository.findDistinctAmenityType();
+    }
+
+    @Override
+    public List<Amenity> findAmenityByAmenity(String amenity) {
+        return this.amenityRepository.findAmenityByAmenity(amenity);
+    }
 }
