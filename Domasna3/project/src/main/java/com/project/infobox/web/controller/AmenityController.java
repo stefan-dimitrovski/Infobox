@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/amenity")
+@RequestMapping("")
 public class AmenityController {
 
     private final AmenityService amenityService;
@@ -33,4 +33,6 @@ public class AmenityController {
 
         return "listAmenities";
     }
+
+
 }
