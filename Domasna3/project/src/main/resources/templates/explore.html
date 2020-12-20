@@ -87,6 +87,7 @@
                     <th:block th:if="${hasId}">
                         <span id="passDataToJS" th:attr="data-id=${id}" style="visibility: hidden; display: none;"></span>
                     </th:block>
+                    <span id="passDataToJsLocation" th:attr="data-lat=${userLocation[0]},data-lon=${userLocation[1]}" style="visibility: hidden; display: none;"></span>
                     <div id="infoArea"></div>
                 </div>
                 <div class="col-sm-8 col-md-8" id="mapid" style="height: 500px; border: 2px solid lightgray; border-radius: 10px;"></div>

@@ -1,3 +1,9 @@
+
+// ako ne raboti api-ot treba da se stavi adresata na host-ot bez / na kraj
+var hostIP = "http://localhost:8080";
+
+
+
 var mymap = L.map('mapid').setView([41.996243, 21.428146], 13);
 //pk.eyJ1IjoicDFheWVyIiwiYSI6ImNraGUyYTBrNzA3cXgyd3FvZWJ6dDA5N28ifQ.lLfGB-VZBrqEhsjIERV4Qg
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -10,32 +16,39 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 }).addTo(mymap);
 
 var localization = {
-    id: "ID_TEMP: ",
-    lat: "LAT_TEMP: ",
-    lon: "LOT_TEMP: ",
-    amenity: "AMENITY_TEMP: ",
+    id: "ID_TEMP",
+    lon: "LON_TEMP",
+    lat: "LAT_TEMP",
     name: "Name: ",
-    cuisine: "Cuisine: ",
-    addr_street: "Street: ",
-    addr_postcode: "Postcode: ",
-    building: "Building: ",
-    addr_city: "City: ",
-    opening_hours: "Opening hour: ",
-    internet_access: "Internet access: ",
-    addr_housenumber: "House number: ",
-    phone: "Phone: ",
-    smoking: "Smoking: ",
-    outdoor_seating: "Outdoor seating: ",
-    website: "Website: ",
-    takeaway: "Takeaway: ",
-    wheelchair: "Wheelchair: ",
-    operator_: "Operator: ",
     email: "Email: ",
-    delivery: "Delivery: ",
+    phone: "Phone: ",
+    amenity: "Amenity: ",
+    cuisine: "Cuisine: ",
+    smoking: "Smoking: ",
+    name_en: "Name eng: ",
+    website: "Website: ",
+    addr_city: "City address: ",
+    addr_street: "Street address: ",
+    addr_postcode: "Postcode: ",
+    opening_hours: "Opening hours: ",
+    outdoorseating: "Outdoor seating: ",
+    addr_housenumber: "House number: ",
+    wheelchair: "",
+    building: "Building: ",
     drive_through: "Drive trough: ",
+    shop: "Shop: ",
+    takeaway: "Takeaway: ",
+    internet_access: "Internet access: ",
+    drive_in: "Drive-in: ",
+    delivery: "Delivery: ",
+    abandoned: "Abandoned: ",
+    seasonal: "Seasonal: ",
+    wifi: "Wi-Fi: ",
+    operator: "Operator: ",
     organic: "Organic: ",
-    capacity: "Capacity: ",
-    payment_mastercard: "Mastercard: "
+    payment_mastercard: "Mastercard: ",
+    payment_visa: "Visa: ",
+    capacity: "Capacity: "
 };
 
 function showInfo(place) {
@@ -57,12 +70,13 @@ function showInfo(place) {
 
 var getID = document.getElementById("passDataToJS");
 if ( getID != null ) {
-    $.ajax('http://localhost:8080/api?id=' + getID.getAttribute("data-id"), {
+    $.ajax(hostIP + '/api?id=' + getID.getAttribute("data-id"), {
         success: function(data, stauts, xhr) {
             if (data == null) {
                 document.getElementById("infoArea").innerHTML = "ERROR: Location not found.";
             }
             else {
+                L.marker([data["lat"], data["lon"]]).addTo(mymap);
                 showInfo(data);
             }
         },
@@ -73,11 +87,30 @@ if ( getID != null ) {
 }
 
 var cafe = []; // me mrzi da go smenam
+// var latUser = document.getElementById("passDataToJsLocation").getAttribute("data-lat");
+// var lonUser = document.getElementById("passDataToJsLocation").getAttribute("data-lon");
+// TODO
+// var userIcon = L.icon({
+//     iconUrl: 'js/leaflet/images/marker-icon-person.png',
+//     shadowUrl: 'js/leaflet/images/marker-shadow.png',
+//
+//     iconSize:     [25, 41], // size of the icon
+//     shadowSize:   [41, 41], // size of the shadow
+//     iconAnchor:   [12, 40], // point of the icon which will correspond to marker's location
+//     shadowAnchor: [4, 30],  // the same for the shadow
+//     popupAnchor:  [-3, -41] // point from which the popup should open relative to the iconAnchor
+// });
+
+
+
+var layerGroup = L.layerGroup().addTo(mymap);
+// L.marker([latUser, lonUser], {icon: userIcon}).addTo(mymap);
 function addMarkers() {
     // remove all the markers in one go
     layerGroup.clearLayers();
+    // L.marker([latUser, lonUser], {icon: userIcon}).addTo(mymap);
     if (document.getElementById("choosePlace").value == "return") return;
-    $.ajax('http://localhost:8080/api/amenity?type=' + document.getElementById("choosePlace").value, {
+    $.ajax(hostIP + '/api/amenity?type=' + document.getElementById("choosePlace").value, {
         success: function(data, stauts, xhr) {
             cafe = data;
             for (let i = 0; i < cafe.length; i++) {

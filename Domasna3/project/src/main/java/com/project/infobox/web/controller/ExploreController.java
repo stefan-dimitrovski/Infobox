@@ -1,6 +1,5 @@
 package com.project.infobox.web.controller;
 
-import com.project.infobox.external.NameFormatter;
 import com.project.infobox.repository.AmenityRepository;
 import com.project.infobox.service.LocationService;
 import org.springframework.stereotype.Controller;
@@ -36,6 +35,7 @@ public class ExploreController {
         else { // ova e za dali da go krie Choose amenity ako e dadeno ID
             model.addAttribute("hasId", false);
         }
+        model.addAttribute("userLocation", request.getSession().getAttribute("userLocation"));
         return "explore";
     }
 }
