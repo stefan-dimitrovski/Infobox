@@ -1,4 +1,4 @@
-package com.project.infobox.web;
+package com.project.infobox.web.controller;
 
 import com.project.infobox.service.AmenityService;
 import org.springframework.stereotype.Controller;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/amenity")
 public class AmenityController {
 
     private final AmenityService amenityService;

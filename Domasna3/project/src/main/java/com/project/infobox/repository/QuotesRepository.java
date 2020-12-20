@@ -7,7 +7,7 @@ import java.util.Random;
 
 @Repository
 public class QuotesRepository {
-    // znam ne treba ova vaka, samo za da testiram
+    //room for change
     private String[] quotes;
     private Random random;
 
@@ -15,330 +15,181 @@ public class QuotesRepository {
     public void init() {
         random = new Random();
         quotes = new String[]{
-                "As seen on TV!"
-                , "Awesome!"
-                , "100% pure!"
-                , "May contain nuts!"
-                , "More polygons!"
-                , "Moderately attractive!"
-                , "Limited edition!"
-                , "Flashing letters!"
-                , "It's here!"
-                , "Best in class!"
-                , "It's finished!"
-                , "Kind of dragon free!"
-                , "Excitement!"
-                , "More than 500 sold!"
-                , "One of a kind!"
-                , "Heaps of hits on YouTube!"
-                , "Indev!"
-                , "Spiders everywhere!"
-                , "Check it out!"
-                , "Holy cow, man!"
-                , "It's a game!"
-                , "Made in Sweden!"
-                , "Uses LWJGL!"
-                , "Reticulating splines!"
-                , "Minecraft!"
-                , "Yaaay!"
-                , "Singleplayer!"
-                , "Keyboard compatible!"
-                , "Ingots!"
-                , "Exploding creepers!"
-                , "That's no moon!"
-                , "l33t!"
-                , "Create!"
-                , "Survive!"
-                , "Dungeon!"
-                , "Exclusive!"
-                , "The bee's knees!"
-                , "Closed source!"
-                , "Classy!"
-                , "Wow!"
-                , "Not on steam!"
-                , "Oh man!"
-                , "Awesome community!"
-                , "Pixels!"
-                , "Teetsuuuuoooo!"
-                , "Kaaneeeedaaaa!"
-                , "Now with difficulty!"
-                , "Enhanced!"
-                , "90% bug free!"
-                , "Pretty!"
-                , "12 herbs and spices!"
-                , "Fat free!"
-                , "Absolutely no memes!"
-                , "Free dental!"
-                , "Ask your doctor!"
-                , "Minors welcome!"
-                , "Cloud computing!"
-                , "Legal in Finland!"
-                , "Hard to label!"
-                , "Technically good!"
-                , "Bringing home the bacon!"
-                , "Indie!"
-                , "GOTY!"
-                , "Ceci n'est pas une title screen!"
-                , "Euclidian!"
-                , "Now in 3D!"
-                , "Inspirational!"
-                , "Herregud!"
-                , "Complex cellular automata!"
-                , "Yes, sir!"
-                , "Played by cowboys!"
-                , "OpenGL 2.1 (if supported)!"
-                , "Thousands of colors!"
-                , "Try it!"
-                , "Age of Wonders is better!"
-                , "Try the mushroom stew!"
-                , "Sensational!"
-                , "Hot tamale, hot hot tamale!"
-                , "Play him off, keyboard cat!"
-                , "Guaranteed!"
-                , "Macroscopic!"
-                , "Bring it on!"
-                , "Random splash!"
-                , "Call your mother!"
-                , "Monster infighting!"
-                , "Loved by millions!"
-                , "Ultimate edition!"
-                , "Freaky!"
-                , "You've got a brand new key!"
-                , "Water proof!"
-                , "Uninflammable!"
-                , "Whoa, dude!"
-                , "All inclusive!"
-                , "Tell your friends!"
-                , "NP is not in P!"
-                , "Music by C418!"
-                , "Livestreamed!"
-                , "Haunted!"
-                , "Polynomial!"
-                , "Terrestrial!"
-                , "All is full of love!"
-                , "Full of stars!"
-                , "Scientific!"
-                , "Not as cool as Spock!"
-                , "Collaborate and listen!"
-                , "Never dig down!"
-                , "Take frequent breaks!"
-                , "Not linear!"
-                , "Han shot first!"
-                , "Nice to meet you!"
-                , "Buckets of lava!"
-                , "Ride the pig!"
-                , "Larger than Earth!"
-                , "sqrt(-1) love you!"
-                , "Phobos anomaly!"
-                , "Punching wood!"
-                , "Falling off cliffs!"
-                , "1% sugar!"
-                , "150% hyperbole!"
-                , "Synecdoche!"
-                , "Let's danec!"
-                , "Seecret Friday update!"
-                , "Reference implementation!"
-                , "Kiss the sky!"
-                , "20 GOTO 10!"
-                , "Verlet intregration!"
-                , "Peter Griffin!"
-                , "Do not distribute!"
-                , "Cogito ergo sum!"
-                , "4815162342 lines of code!"
-                , "A skeleton popped out!"
-                , "The sum of its parts!"
-                , "BTAF used to be good!"
-                , "I miss ADOM!"
-                , "umop-apisdn!"
-                , "OICU812!"
-                , "Bring me Ray Cokes!"
-                , "Finger-licking!"
-                , "Thematic!"
-                , "Pneumatic!"
-                , "Sublime!"
-                , "Octagonal!"
-                , "Une baguette!"
-                , "Gargamel plays it!"
-                , "Rita is the new top dog!"
-                , "SWM forever!"
-                , "Representing Edsbyn!"
-                , "Matt Damon!"
-                , "Supercalifragilisticexpialidocious!"
-                , "Consummate V's!"
-                , "Cow Tools!"
-                , "Double buffered!"
-                , "Fan fiction!"
-                , "Flaxkikare!"
-                , "Jason! Jason! Jason!"
-                , "Hotter than the sun!"
-                , "Internet enabled!"
-                , "Autonomous!"
-                , "Engage!"
-                , "Fantasy!"
-                , "DRR! DRR! DRR!"
-                , "Kick it root down!"
-                , "Regional resources!"
-                , "Woo, facepunch!"
-                , "Woo, somethingawful!"
-                , "Woo, tigsource!"
-                , "Woo, worldofminecraft!"
-                , "Woo, reddit!"
-                , "Woo, 2pp!"
-                , "Google anlyticsed!"
-                , "Now supports åäö!"
-                , "Give us Gordon!"
-                , "Tip your waiter!"
-                , "Very fun!"
-                , "12345 is a bad password!"
-                , "Vote for net neutrality!"
-                , "Lives in a pineapple under the sea!"
-                , "MAP11 has two names!"
-                , "Omnipotent!"
-                , "Gasp!"
-                , "...!"
-                , "Bees, bees, bees, bees!"
-                , "Jag känner en bot!"
-                , "This text is hard to read if you play the game at the default resolution, but at 1080p it's fine!"
-                , "Haha, LOL!"
-                , "Hampsterdance!"
-                , "Menger sponge!"
-                , "idspispopd!"
-                , "Eple (original edit)!"
-                , "So fresh, so clean!"
-                , "Slow acting portals!"
-                , "Try the Nether!"
-                , "Don't look directly at the bugs!"
-                , "Oh, ok, Pigmen!"
-                , "Finally with ladders!"
-                , "Scary!"
-                , "Play Minecraft, Watch Topgear, Get Pig!"
-                , "Twittered about!"
-                , "Jump up, jump up, and get down!"
-                , "Joel is neat!"
-                , "A riddle, wrapped in a mystery!"
-                , "This parrot is no more! It has ceased to be!"
-                , "Welcome to your Doom!"
-                , "Stay a while, stay forever!"
-                , "Stay a while and listen!"
-                , "Treatment for your rash!"
-                , "Autological is!"
-                , "Information wants to be free!"
-                , "Almost never is an interesting concept!"
-                , "Lots of truthiness!"
-                , "The creeper is a spy!"
-                , "Turing complete!"
-                , "It's groundbreaking!"
-                , "Let our battle's begin!"
-                , "The sky is the limit!"
-                , "Jeb has amazing hair!"
-                , "Ryan also has amazing hair!"
-                , "Casual gaming!"
-                , "Undefeated!"
-                , "Kinda like Lemmings!"
-                , "Follow the train, CJ!"
-                , "Leveraging synergy!"
-                , "This message will never appear on the splash screen, isn't that weird?"
-                , "DungeonQuest is unfair!"
-                , "90210!"
-                , "Check out the far lands!"
-                , "Tyrion would love it!"
-                , "Also try VVVVVV!"
-                , "Also try Super Meat Boy!"
-                , "Also try Terraria!"
-                , "Also try Mount And Blade!"
-                , "Also try Project Zomboid!"
-                , "Also try World of Goo!"
-                , "Also try Limbo!"
-                , "Also try Pixeljunk Shooter!"
-                , "Also try Braid!"
-                , "That's super!"
-                , "Bread is pain!"
-                , "Read more books!"
-                , "Khaaaaaaaaan!"
-                , "Less addictive than TV Tropes!"
-                , "More addictive than lemonade!"
-                , "Bigger than a bread box!"
-                , "Millions of peaches!"
-                , "Fnord!"
-                , "This is my true form!"
-                , "Don't bother with the clones!"
-                , "Pumpkinhead!"
-                , "Made by Jeb!"
-                , "Has an ending!"
-                , "Finally complete!"
-                , "Feature packed!"
-                , "Boots with the fur!"
-                , "Stop, hammertime!"
-                , "Testificates!"
-                , "Conventional!"
-                , "Homeomorphic to a 3-sphere!"
-                , "Doesn't avoid double negatives!"
-                , "Place ALL the blocks!"
-                , "Does barrel rolls!"
-                , "Meeting expectations!"
-                , "PC gaming since 1873!"
-                , "Ghoughpteighbteau tchoghs!"
-                , "Déjà vu!"
-                , "Déjà vu!"
-                , "Got your nose!"
-                , "Haley loves Elan!"
-                , "Afraid of the big, black bat!"
-                , "Doesn't use the U-word!"
-                , "Child's play!"
-                , "See you next Friday or so!"
-                , "From the streets of Södermalm!"
-                , "150 bpm for 400000 minutes!"
-                , "Technologic!"
-                , "Funk soul brother!"
-                , "Pumpa kungen!"
-                , "日本ハロー！"
-                , "한국 안녕하세요!"
-                , "Helo Cymru!"
-                , "Cześć Polsko!"
-                , "你好中国！"
-                , "Привет Россия!"
-                , "Γεια σου Ελλάδα!"
-                , "My life for Aiur!"
-                , "Lennart lennart = new Lennart();"
-                , "I see your vocabulary has improved!"
-                , "Who put it there?"
-                , "You can't explain that!"
-                , "if not ok then return end"
-                , "§1C§2o§3l§4o§5r§6m§7a§8t§9i§ac"
-                , "§kFUNKY LOL"
-                , "Big Pointy Teeth!"
-                , "Bekarton guards the gate!"
-                , "Mmmph, mmph!"
-                , "Don't feed avocados to parrots!"
-                , "Swords for everyone!"
-                , "Plz reply to my tweet!"
-                , ".party()!"
-                , "Take her pillow!"
-                , "Put that cookie down!"
-                , "Pretty scary!"
-                , "I have a suggestion."
-                , "Now with extra hugs!"
-                , "Now Java 8!"
-                , "Woah."
-                , "HURNERJSGER?"
-                , "What's up, Doc?"
-                , "Now contains 32 random daily cats!"
-                , "That's Numberwang!"
-                , "pls rt"
-                , "Do you want to join my server?"
-                , "Put a little fence around it!"
-                , "Throw a blanket over it!"
-                , "One day, somewhere in the future, my work will be quoted!"
-                , "Now with additional stuff!"
-                , "Extra things!"
-                , "Yay, puppies for everyone!"
-                , "So sweet, like a nice bon bon!"
-                , "Very influential in its circle!"
-                , "Now With Multiplayer!"
-                , "Rise from your grave!"
-                , "Warning! A huge battleship STEVE is approaching fast!"
-                , "Blue warrior shot the food!"
-                , "Run, coward! I hunger!"
+                "    First, we eat. Then, we do everything else.",
+                "    I’m not drooling, you are!",
+                "    Is it just me or does this meal look more scrumptious because I’m on a diet?",
+                "    I like people who love to eat. They’re the best kind of people in the world.",
+                "    Live, love, eat.",
+                "    Made with love.",
+                "    To live a full life, you have to fill your stomach first.",
+                "    Carbs might be my soulmate.",
+                "    All I want for Christmas is...food.",
+                "    Never eat more than you can lift.",
+                "    The most essential part of a well-balanced diet is—food!",
+                "    Dear diet, things just aren’t looking good for the both of us. It’s not me, it’s you. You’re too much work. You’re boring and I can’t stop cheating on you.",
+                "    Hunger is a good cook.",
+                "    A little slice of heaven.",
+                "    Good food never fail in bringing people together.",
+                "    Eat right, exercise, die anyway.",
+                "    It’s essential for every party to have cake. If there’s no cake, then it’s only a meeting.",
+                "    9 out of 10 people love chocolate. And the 10th person is always lying.",
+                "    The chief ingredient in yummy food is love.",
+                "    There is no better reward for hard work than good food.",
+                "    They told me to follow my heart. Guess where it led me? To the fridge.",
+                "    Skinny people are easier to kidnap. Stay safe, eat cake.",
+                "    I’m soy into you.",
+                "    Life is about exploring the pasta-billities.",
+                "    Grill and chill!",
+                "    Good people, good food, good time.",
+                "    I’d hate to lie on my deathbed and think: “I could have eaten that!”",
+                "    One does not need silver cutlery to eat delectable food.",
+                "    Food shared is happiness multiplied.",
+                "    Eat, drink and live free. There’s no telling what might happen tomorrow.",
+                "    Oh, did you say exercise? I thought you said extra fries!",
+                "    Another one bites the crust.",
+                "    There’s nothing more romantic than a serene walk to the fridge.",
+                "    Life is infinitely delicious.",
+                "    Breakfast food can cure all sadness away.",
+                "    What diet?",
+                "    Dine well and you’ll be able to think well, sleep well, and live well.",
+                "    Cupcakes are muffins that believed in miracles.",
+                "    For some reason, food tastes better when it’s somebody‘s treat.",
+                "    Everything you see, I owe to spaghetti.",
+                "    It’s not true that money can’t buy happiness. I mean, have you tried buying ice cream? It’s the same thing!",
+                "    Dinner is one of life’s greatest pleasures.",
+                "    I’m obsessed with food.",
+                "    How do I like my eggs? In cake, of course!",
+                "    Chocolate makes everything better.",
+                "    I'm so eggcited to eat!",
+                "    I just want someone to utter these three magic words to me: “I brought food.”",
+                "    Good food, good mood.",
+                "    This is a festival of flavors.",
+                "    There is no “we” in fries. Remember that!",
+                "    There’s nothing more romantic than Italian food.",
+                "    I’m on a 30-day diet. So far, I’ve lost 15 days.",
+                "    Where there is good food, there is happiness.",
+                "    Let’s eat some diet food while we wait for the steak to cook.",
+                "    In the mood for noods.",
+                "    Eat today, live another day.",
+                "    I’m never giving up on chocolate! I’m not a quitter!",
+                "    I am on a seafood diet. I see food, I eat it.",
+                "    A day is best started on a full stomach.",
+                "    When you eat food with your family and friends, it always tastes better!",
+                "    I love you to the fridge and back.",
+                "    Everything tastes good when you’re hungry.",
+                "    Love and sausage are alike. I can never get enough of both.",
+                "    Donut worry, be happy.",
+                "    I’m feeling heroic today. I think I might go rescue some alcohol trapped in some kind of bottle later.",
+                "    Count memories, not calories.",
+                "    If my plate is full, I'm happy.",
+                "    You know what’s better than blabbering about food? Yup, eating!",
+                "    In order to achieve a balanced diet, one must hold a cookie in each hand.",
+                "    I’ve always been fond of hashtags. They remind me of waffles!",
+                "    Come on, hog it out!",
+                "    Most people eat to live. On the contrary, I live to eat.",
+                "    Calories don’t count during the weekends.",
+                "    There’s absolutely no need for me to go to the gym. The name of the cashier at the Mcdonald’s I frequent is Jim, so same thing!",
+                "    I love Instagram because it allows me to maintain a record of every meal I partake.",
+                "    Eating spaghetti requires so much attention. That’s why you can never feel lonely while eating it.",
+                "    Fueled by ramen.",
+                "    Take food as your medicine before you take medicine as your food.",
+                "    If it’s made of chocolate, then I’m going to eat it!",
+                "    First, we eat breakfast. Then, we change the world.",
+                "    Good food is the foundation of happiness.",
+                "    Food is always more satisfying after a day’s hard work.",
+                "    Magic happens in the kitchen during lunch time and dinner time.",
+                "    I have hunger management issues.",
+                "    Note to self: “Eyes on the fries!”",
+                "    If you do not eat well, then you won’t be able to think well, love well, and sleep well.",
+                "    My head is full of thoughts about food. Don’t judge, it’s a thing.",
+                "    Food is the ultimate pacifier. I feel like I can forgive anyone after a scrumptious meal.",
+                "    Broken cookies have no calories!",
+                "    Food, friends, fun.",
+                "    Despite what psychologists say, it’s totally okay to replace love with food.",
+                "    I’m the best when it comes to eating meat.",
+                "    If no one catches you eating it, then it has no calories. This, my friend, is the first rule of my diet.",
+                "    Halt your work and eat lunch!",
+                "    Sorry, I'm in a relationship—with food!",
+                "    Food is fuel.",
+                "    Sorry, if it’s not on the plate, then it can wait.",
+                "    Whenever you see me seemingly thinking deep thoughts, I’m probably just thinking about food.",
+                "    Why am I eating cake? Because it’s somebody’s birthday somewhere out there!",
+                "    Food is really and truly the most effective medicine.",
+                "    Made to perfection.",
+                "    Never break a promise! On the other hand, you can break as many pie crust as you want.",
+                "    To eat is human, to digest, divine.",
+                "    Food is my number 1 priority.",
+                "    Who needs love when you can eat all the chocolate in the world.",
+                "    I feel like stripping whenever I see good food.",
+                "    There is no love more sincere than my love for food.",
+                "    If you’re hungry and you want thousands of something, then eat rice!",
+                "    Who needs inspirational quotes when you can just drink coffee?",
+                "    If you combine wine and dinner, the new word is winner",
+                "    Life is uncertain. Eat dessert first.",
+                "    To eat is to appropriate by destruction.",
+                "    I like my coffee black like my soul.",
+                "    Eat whatever you want, and if someone tries to lecture you about your weight, eat them too!",
+                "    If you combine good flavors, food turns into an orchestra.",
+                "    If the fries is right, then we have a deal!",
+                "    Your diet is a bank account. A good option is a good investment.",
+                "	    I told them I won’t go if there was no food involved, so here I am!",
+                "    Cheese is milk’s leap towards immortality.",
+                "    Bliss on a plate.",
+                "    Food always feels like luxury when you’re hungry.",
+                "    Don’t be upsetti, eat some spaghetti.",
+                "    As the old adage goes: “Keep your friends close, and your snacks closer.”",
+                "    Tasty food brings eternal bliss.",
+                "    Cooking is love made visible.",
+                "    Chick this out!",
+                "    Let’s gain some weight!",
+                "    I’m on a feeding frenzy.",
+                "    If you ask me what my favorite animal is, it’s steak!",
+                "    Is it too much to ask for me to have buns of steel and buns of cinnamon at the same time?",
+                "    I spread love like how I spread Nutella and peanut butter.",
+                "    Food is my best friend.",
+                "    Snacks are awesome! Don’t you ever underestimate their power!",
+                "    I can tell a lot about people from the way they eat their jelly beans.",
+                "    Coffee is always a good idea.",
+                "    I was always a junk food person. I still am.",
+                "    When you mix good flavors, the food turns into an orchestra.",
+                "    Taste of heaven.",
+                "    Who needs friends when you can eat all the snacks you want?",
+                "    My favorite hobby is eating.",
+                "    Food is worth all the weight gain.",
+                "    In pizza, we crust.",
+                "    Take a seat, grab a treat.",
+                "    You gotta nourish to flourish.",
+                "    My soul’s dark, I’m always bitter, and I’m too hot for you. Yup, I’m just like my favorite kind of coffee.",
+                "    When words are inadequate, munch some food.",
+                "    A little chocolate a day never hurts.",
+                "    Pork-fection on a plate.",
+                "    The belly rules the mind.",
+                "    When you’re a downie, eat a brownie.",
+                "    Savor the flavor.",
+                "    Food is a tasty hug.",
+                "    Say yes to more cheese!",
+                "    We are lucky that we don’t have to venture into the wild and hunt for food anymore. Like, where do tacos even live?!",
+                "    I’m in the mood for food.",
+                "    Money won’t be able to buy happiness, but it can get you this delicious meal instead.",
+                "    From what I eat, you can probably tell what I am.",
+                "    Food is way cheaper than therapy.",
+                "    The secret ingredient is always cheese.",
+                "    Food is always a good idea.",
+                "    This meal is no misteak.",
+                "    Help, send chocolate!",
+                "    Eating breakfast is a nice way of saying thank you to your body.",
+                "    Every french fry was a potato once.",
+                "    Don’t go bacon my heart.",
+                "    If you want to impress me, then: 1. Buy me food, 2. Make me food, or 3. Be food.",
+                "    You can't just eat good food. You've got to talk about it too. And you've got to talk about it to somebody who understands that kind of food.",
+                "    Happiness is homemade.",
+                "    This year, I was closest to the diet while cleaning originators from my browsing history.",
+                "    I’m no glutton—I’m an explorer of food!",
+                "    There's no such thing as too much food.",
+                "    Food vibes only.",
+                "    I only came for the food.",
+                "    Cooked to perfection.",
+                "    How can I go on a diet? The fridge is still full!"
         };
     }
 
