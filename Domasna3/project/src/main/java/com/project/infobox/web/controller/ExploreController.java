@@ -31,6 +31,7 @@ public class ExploreController {
         if (id != null) {
             model.addAttribute("locationInfo", amenityRepository.findById(id));
             model.addAttribute("hasId", true);
+            model.addAttribute("id", id);
         }
         else { // ova e za dali da go krie Choose amenity ako e dadeno ID
             model.addAttribute("hasId", false);

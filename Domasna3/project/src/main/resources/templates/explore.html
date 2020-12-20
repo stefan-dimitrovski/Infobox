@@ -81,22 +81,16 @@
                             <option value="restaurant">Restaurant</option>
                         </select><br>
                     </th:block>
-
                     <th:block th:if="${hasId}">
-                        <ul>
-                            <th:block th:each="item: ${locationInfo}">
-                                <li th:text="item"></li>
-                            </th:block>
-                        </ul>
-
+                        <span id="passDataToJS" th:attr="data-id=${id}" style="visibility: hidden; display: none;"></span>
                     </th:block>
-
-<!--                    <div id="infoArea"></div>-->
+                    <div id="infoArea"></div>
                 </div>
                 <div class="col-sm-8 col-md-8" id="mapid" style="height: 500px; border: 2px solid lightgray; border-radius: 10px;"></div>
             </div>
         </div>
     </div>
+
 </body>
     <script src="js/leafletMapInit.js"></script>
 </html>
