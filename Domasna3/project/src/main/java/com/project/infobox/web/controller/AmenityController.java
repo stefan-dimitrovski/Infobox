@@ -1,4 +1,4 @@
-package com.project.infobox.web;
+package com.project.infobox.web.controller;
 
 import com.project.infobox.service.AmenityService;
 import org.springframework.stereotype.Controller;
