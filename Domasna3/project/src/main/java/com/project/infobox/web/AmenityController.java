@@ -33,4 +33,6 @@ public class AmenityController {
 
         return "listAmenities";
     }
+
+
 }

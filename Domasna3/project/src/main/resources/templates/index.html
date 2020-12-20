@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="js/chosen/chosen.min.css">
     <script src="js/chosen/chosen.jquery.min.js"></script>
 
-    <!--    Tabulator    -->
-    <link href="js/tabulator-master/dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/tabulator-master/dist/js/tabulator.min.js"></script>
+    <!--    Datatable     -->
+    <script src="js/datatable/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="js/datatable/jquery.dataTables.min.css">
 
     <!--    Bootstrap     -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -41,6 +41,10 @@
         li a {
             color: white !important;
             font-weight: bolder;
+        }
+
+        td {
+            word-wrap: break-word;
         }
 
     </style>
@@ -166,18 +170,45 @@
 <!--    <div id="example-table"></div>-->
 
 <div class="container">
-    <div id="dataTable" style="visibility: hidden"></div>
+
+    <th:block th:if="${hasTable}">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Name:</th>
+                    <th>Amenity:</th>
+                    <th>Cuisine:</th>
+                    <th>More info?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="item: ${tableData}">
+                    <tr>
+                        <td th:text="${item.getName()}"></td>
+                        <td th:text="${item.getAmenity()}"></td>
+                        <td th:text="${item.getCuisine()}"></td>
+                        <td th:text="${item.getName()}"></td>
+                        <td></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+    </th:block>
+
+    <span id="passDataForTable" th:attr="data-items=${items}"></span>
+
 </div>
 </body>
 <script>
     $(".chosen-select").chosen().change(function() {
         document.getElementById("itemsTest").value = $(".chosen-select").val().join(";");
-        console.log($(".chosen-select").val());
     });
 
 
-    function postItems() {
+    $("#dataTable").DataTable();
 
-    }
+
+
+
 </script>
 </html>

@@ -87,9 +87,10 @@ if ( getID != null ) {
 }
 
 var cafe = []; // me mrzi da go smenam
+
 // var latUser = document.getElementById("passDataToJsLocation").getAttribute("data-lat");
 // var lonUser = document.getElementById("passDataToJsLocation").getAttribute("data-lon");
-// TODO
+// TODO lokacija na korisnik
 // var userIcon = L.icon({
 //     iconUrl: 'js/leaflet/images/marker-icon-person.png',
 //     shadowUrl: 'js/leaflet/images/marker-shadow.png',
