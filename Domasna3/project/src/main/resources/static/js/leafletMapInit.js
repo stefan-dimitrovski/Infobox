@@ -61,6 +61,9 @@ function showInfo(place) {
             if (i == "website") {
                 infoArea.innerHTML += "<b>" + localization[i] + "</b><a href=" + place[i] + "target=\"_blank\">" + place[i] + "</a><br>";
             }
+            else if (i == "cuisine") {
+                infoArea.innerHTML += "<b>" + localization[i] + "</b>" + place[i].replaceAll(";", ", ") + "<br>";
+            }
             else {
                 infoArea.innerHTML += "<b>" + localization[i] + "</b>" + place[i] + "<br>";
             }
@@ -77,6 +80,7 @@ if ( getID != null ) {
             }
             else {
                 L.marker([data["lat"], data["lon"]]).addTo(mymap);
+                mymap.setView([data["lat"], data["lon"]], 13);
                 showInfo(data);
             }
         },

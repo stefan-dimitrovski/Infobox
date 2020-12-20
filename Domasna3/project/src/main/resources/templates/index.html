@@ -169,35 +169,28 @@
 </div>
 <!--    <div id="example-table"></div>-->
 
-<div class="container">
 
     <th:block th:if="${hasTable}">
-        <table id="dataTable">
+        <table id="dataTable" class="container">
             <thead>
                 <tr>
                     <th>Name:</th>
                     <th>Amenity:</th>
                     <th>Cuisine:</th>
-                    <th>More info?</th>
                 </tr>
             </thead>
             <tbody>
                 <th:block th:each="item: ${tableData}">
                     <tr>
-                        <td th:text="${item.getName()}"></td>
+                        <td><a th:href="@{'/explore?'(id=${item.getId()})}" th:text="${item.getName()}"></a></td>
                         <td th:text="${item.getAmenity()}"></td>
-                        <td th:text="${item.getCuisine()}"></td>
-                        <td th:text="${item.getName()}"></td>
-                        <td></td>
+                        <td th:text='${item.getCuisine().replaceAll(";", ", ").replaceAll("_", " ")}' id="cuisine"></td>
                     </tr>
                 </th:block>
             </tbody>
         </table>
     </th:block>
-
-    <span id="passDataForTable" th:attr="data-items=${items}"></span>
-
-</div>
+<!--    <span id="passDataForTable" th:attr="data-items=${items}"></span>-->
 </body>
 <script>
     $(".chosen-select").chosen().change(function() {
