@@ -19,7 +19,13 @@ public class GetDataController {
 
     @GetMapping
     @ResponseBody
-    public Optional<Amenity> getAmenityData(@RequestParam Long id) {
+    public Optional<Amenity> getLocationData(@RequestParam Long id) {
         return amenityRepository.findById(id);
+    }
+
+    @GetMapping("/amenity")
+    @ResponseBody
+    public List<Amenity> getAmenityData(@RequestParam String type) {
+        return amenityRepository.findAmenityByAmenity(type);
     }
 }

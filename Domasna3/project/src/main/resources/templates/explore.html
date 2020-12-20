@@ -76,9 +76,12 @@
                     <th:block th:if="${!hasId}">
                         <br><span class="h1" style="color: white">Choose amenity:</span>
                         <select class="form-control" name="choosePlace" id="choosePlace" onchange="addMarkers()">
-                            <option value="cafe">Cafe</option>
-                            <option value="fast_food">Fast food</option>
+                            <option value="return">-- Select --</option>
                             <option value="restaurant">Restaurant</option>
+                            <option value="fast_food">Fast Food</option>
+                            <option value="bar">Bar</option>
+                            <option value="cafe">Cafe</option>
+                            <option value="ice_cream">Ice cream</option>
                         </select><br>
                     </th:block>
                     <th:block th:if="${hasId}">

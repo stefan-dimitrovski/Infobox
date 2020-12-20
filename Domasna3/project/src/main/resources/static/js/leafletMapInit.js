@@ -59,10 +59,30 @@ var getID = document.getElementById("passDataToJS");
 if ( getID != null ) {
     $.ajax('http://localhost:8080/api?id=' + getID.getAttribute("data-id"), {
         success: function(data, stauts, xhr) {
-            showInfo(data);
+            if (data == null) {
+                document.getElementById("infoArea").innerHTML = "ERROR: Location not found.";
+            }
+            else {
+                showInfo(data);
+            }
+        },
+        error: function () {
+            document.getElementById("infoArea").innerHTML = "ERROR: Location not found.";
         }
     });
 }
 
-
-
+var cafe = []; // me mrzi da go smenam
+function addMarkers() {
+    // remove all the markers in one go
+    layerGroup.clearLayers();
+    if (document.getElementById("choosePlace").value == "return") return;
+    $.ajax('http://localhost:8080/api/amenity?type=' + document.getElementById("choosePlace").value, {
+        success: function(data, stauts, xhr) {
+            cafe = data;
+            for (let i = 0; i < cafe.length; i++) {
+                L.marker([cafe[i].lat, cafe[i].lon]).on('click', function () { showInfo(cafe[i]) }).addTo(layerGroup);
+            }
+        }
+    });
+}
