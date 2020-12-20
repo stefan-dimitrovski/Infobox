@@ -61,6 +61,9 @@ function showInfo(place) {
             if (i == "website") {
                 infoArea.innerHTML += "<b>" + localization[i] + "</b><a href=" + place[i] + "target=\"_blank\">" + place[i] + "</a><br>";
             }
+            else if (i == "cuisine") {
+                infoArea.innerHTML += "<b>" + localization[i] + "</b>" + place[i].replaceAll(";", ", ") + "<br>";
+            }
             else {
                 infoArea.innerHTML += "<b>" + localization[i] + "</b>" + place[i] + "<br>";
             }
@@ -77,6 +80,7 @@ if ( getID != null ) {
             }
             else {
                 L.marker([data["lat"], data["lon"]]).addTo(mymap);
+                mymap.setView([data["lat"], data["lon"]], 13);
                 showInfo(data);
             }
         },
@@ -87,9 +91,10 @@ if ( getID != null ) {
 }
 
 var cafe = []; // me mrzi da go smenam
+
 // var latUser = document.getElementById("passDataToJsLocation").getAttribute("data-lat");
 // var lonUser = document.getElementById("passDataToJsLocation").getAttribute("data-lon");
-// TODO
+// TODO lokacija na korisnik
 // var userIcon = L.icon({
 //     iconUrl: 'js/leaflet/images/marker-icon-person.png',
 //     shadowUrl: 'js/leaflet/images/marker-shadow.png',

@@ -5,6 +5,7 @@ import com.project.infobox.repository.AmenityRepository;
 import com.project.infobox.repository.CuisineRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +20,7 @@ public class CuisineRepositoryImpl implements CuisineRepository {
     }
 
     @Override
-    public Set findBySelectedItems(String items) {
+    public List<Amenity> findBySelectedItems(String items) {
         String[] params = items.split(";");
         List<Amenity> temp;
         Set resultArray = new HashSet();
@@ -27,7 +28,10 @@ public class CuisineRepositoryImpl implements CuisineRepository {
             temp = amenityRepository.findByCuisine(item);
             resultArray.addAll(temp);
         }
-        return resultArray;
+
+        List<Amenity> resultArray2 = new ArrayList<>();
+        resultArray2.addAll(resultArray);
+        return resultArray2;
     }
 
     @Override
@@ -39,6 +43,7 @@ public class CuisineRepositoryImpl implements CuisineRepository {
             temp = amenityRepository.findByCuisineAndAmenity(item, amenity);
             resultArray.addAll(temp);
         }
+
         return resultArray;
     }
 }
