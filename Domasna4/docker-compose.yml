@@ -1,13 +1,13 @@
 version: '3'
 services:
   discovery:
-    image: springio/eureka-spring-boot-docker
+    image: stefandimitrovski21/eurekaserver
     ports:
       - 8761:8761
     networks:
       - infobox
   service:
-    image: springio/service-spring-boot-docker
+    image: stefandimitrovski21/service
     environment:
       - JAVA_OPTS=
       - EUREKA_SERVER=http://discovery:8761/eureka
@@ -18,7 +18,7 @@ services:
     networks:
       - infobox
   glaven:
-    image: springio/glaven-spring-boot-docker
+    image: stefandimitrovski21/glavenui
     environment:
       - JAVA_OPTS=
       - EUREKA_SERVER=http://discovery:8761/eureka
