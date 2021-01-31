@@ -1,0 +1,45 @@
+{
+	"AWSEBDockerrunVersion":2,
+	"containerDefinitions": [
+		{
+			"name": "eureka",
+			"image": "stefandimitrovski21/eurekaserver",
+			"hostname": "eureka",
+			"essential": true,
+			"portMappings": [
+				{
+					"hostPort": 8761,
+					"containerPort": 8761
+				}
+			],
+			"links": ["service", "glavenui"],
+			"memory": 100
+		},
+		{
+			"name": "service",
+			"image": "stefandimitrovski21/service",
+			"hostname": "service",
+			"essential": false,
+			"portMappings": [
+				{
+					"hostPort": 8081,
+					"containerPort": 8081
+				}
+			],
+			"memory": 300
+		},
+		{
+			"name": "glavenui",
+			"image": "stefandimitrovski21/glavenui",
+			"hostname": "glavenui",
+			"essential": false,
+			"portMappings": [
+				{
+					"hostPort": 8080,
+					"containerPort": 8080
+				}
+			],
+			"memory": 300
+		}
+	]
+}
