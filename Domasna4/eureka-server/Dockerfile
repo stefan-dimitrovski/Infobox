@@ -6,7 +6,7 @@
 
 # EXPOSE 8761
 
-FROM openjdk:latest
+FROM openjdk:11
 COPY . /usr/src/myapp/eureka-server
 WORKDIR /usr/src/myapp/eureka-server
 ADD ./target/eureka-server-0.0.1-SNAPSHOT.jar eureka-server.jar

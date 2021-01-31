@@ -6,7 +6,7 @@
 
 # EXPOSE 8761
 
-FROM openjdk:latest
+FROM openjdk:11
 COPY . /usr/src/myapp/infoboxGlaven-master
 WORKDIR /usr/src/myapp/infoboxGlaven-master
 ADD ./target/infobox-0.0.1-SNAPSHOT.jar infoboxGlaven-master.jar
