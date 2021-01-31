@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  eureka-server:
+    build: 
+      context: ./eureka-server
+    image: eureka-server
+    container_name: eureka-server
+    environment: 
+      - SPRING_PROFILES_ACTIVE=server1
+      - LOGGING_LEVEL_COM_NETFLIX_DISCOVERY=DEBUG
+    ports:
+      - "8761:8761"
+    networks: 
+      - network-eureka
+  
+  infobox-main-page:
+    build: 
+      context: ./infoboxGlaven-master
+    image: infobox-main-page
+    container_name: infobox-main-page
+    environment: 
+      - SPRING_PROFILES_ACTIVE=page1
+      - LOGGING_LEVEL_COM_NETFLIX_DISCOVERY=DEBUG
+    ports:
+      - "8080:8080"
+    networks: 
+      - network-eureka
+    depends_on: 
+      - eureka-server
+
+  amenity-places-service:
+    build: 
+      context: ./amenity-places-service
+    image: amenity-places-service
+    container_name: amenity-places-service
+    environment: 
+      - SPRING_PROFILES_ACTIVE=api1
+      - LOGGING_LEVEL_COM_NETFLIX_DISCOVERY=DEBUG
+    ports:
+      - "8081:8081"
+    networks: 
+      - network-eureka
+    depends_on: 
+      - eureka-server
+
+networks:
+  network-eureka:
